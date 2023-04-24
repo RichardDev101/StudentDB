@@ -1,14 +1,17 @@
 package de.neuefische;
 
+import de.neuefische.Model.Student;
 import de.neuefische.Model.StudentDB;
 
 public class Main {
+    StudentDB stuDB;
     public static void main(String[] args) {
 
-        StudentDB student1 = new StudentDB("Alexander Schmidt", 13246);
-        StudentDB student2 = new StudentDB("Klaus Jakovski", 54565);
-        StudentDB studnet3 = new StudentDB("Susann Mayer", 12345);
+        Student student1 = new Student("Alexander Schmidt",22,1);
+        Student student2 = new Student("Klaus Jakovski",23,2);
+        Student student3 = new Student("Susann Mayer",19,3);
 
+        System.out.println(StudentDB());
 
     }
 }
