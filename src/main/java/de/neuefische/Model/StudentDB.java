@@ -4,8 +4,17 @@ public class StudentDB {
     private String name;
     private int id;
 
+    private StudentDB [] allStudents;
 
 
+
+    public getAllStudents (Student)
+
+    }
+    @Override
+    public String toString(){
+        return" Student{" + " name= '"+name+"'"+", id= "+id+"}";
+    }
     //K O N S T R U K T O R E N
     public StudentDB(String name, int id){
         this(name);
