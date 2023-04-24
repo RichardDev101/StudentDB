@@ -11,7 +11,7 @@ public class Main {
         Student student2 = new Student("Klaus Jakovski",23,2);
         Student student3 = new Student("Susann Mayer",19,3);
 
-        System.out.println(StudentDB());
+
 
     }
 }

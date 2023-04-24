@@ -21,6 +21,7 @@ public class Student {
         this.name = name;
         this.age = age;
         this.id =++idCount;
+        System.out.println(this.toString());
 
     }
     // G e t t e r   S t r i n g e r
