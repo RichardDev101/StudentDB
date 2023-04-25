@@ -14,12 +14,13 @@ public class Main{
         System.out.println(student2.toString());
         System.out.println(student3.toString());*/
 
-        Student[] studentsUniMA = {student1, student2, student3};
-        StudentDB studentDB = new StudentDB(studentsUniMA);
+        Student[] students = {student1, student2, student3};
+        StudentDB studentDB = new StudentDB(students);
 
-        //System.out.println(studentDB);
 
-        System.out.println(studentDB.getAllStudents().toString());
+        for (int i =0; i < 30; i++) {
+            System.out.println(studentDB.randomStudent());
+        }
 
 
     }
