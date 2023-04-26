@@ -1,27 +1,24 @@
 package de.neuefische.Model;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class StudentDB{
     //FIELDS
-    private ArrayList<Student> students =new ArrayList<>();
+    private List<Student> students =new ArrayList<>();
 
 
 
-    public ArrayList<Student> addStudent (Student newStudent){
+    public List<Student> addStudent (Student newStudent){
         students.add(newStudent);
         return this.students;
     }
-    public ArrayList<Student> removeStudent(Student studentToRemove) {
+    public List<Student> removeStudent(Student studentToRemove) {
         students.remove(studentToRemove);
         return this.students;
     }
     //METHODS
-    public ArrayList<Student> getAllStudents(){
+    public List<Student> getAllStudents(){
         return this.students;
     }
 
@@ -58,7 +55,7 @@ public class StudentDB{
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
-    public ArrayList<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 }

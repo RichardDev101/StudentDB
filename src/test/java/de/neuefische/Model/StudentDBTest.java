@@ -2,8 +2,9 @@ package de.neuefische.Model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.*;
 
+import static java.util.Collection.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentDBTest {
@@ -15,34 +16,44 @@ class StudentDBTest {
         Student student2= new Student("Susann Heinemann", 22, "SH034");
         Student student3= new Student("Johann Mayer", 19, "JM953");
 
-        Student[] students = {student1, student2, student3};
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
+
         StudentDB studentDB = new StudentDB(students);
         //WHEN
-        Student[] actual = studentDB.getAllStudents();
+        List<Student> actual = studentDB.getAllStudents();
         //THEN
-        assertArrayEquals(students, actual);
-
+        assertEquals(students, actual);
     }
-    @Test
+
+@Test
     void getAllStudents_shouldReturn_threeStudentsShuffled() {
         //GIVEN
         Student student1= new Student("Klaus Mustermann", 18, "KM462");
         Student student2= new Student("Susann Heinemann", 22, "SH034");
         Student student3= new Student("Johann Mayer", 19, "JM953");
 
-        Student[] students = {student1, student2, student3};
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
 
         StudentDB studentDB = new StudentDB(students);
 
-        Student[] expected = {student2,student3,student1};
-        Arrays.sort(expected);
+        List<Student> expected = new ArrayList<>();
+        expected.add(student3);
+        expected.add(student2);
+        expected.add(student1);
+
+        Collections.sort(expected);
 
         //WHEN
-        Student[] actual = studentDB.getAllStudents();
-        Arrays.sort(actual);
+        List<Student> actual = studentDB.getAllStudents();
+        Collections.sort(actual);
 
         //THEN
-        assertArrayEquals(expected, actual);
-
-    }
+        assertEquals(expected, actual);
+        }
 }
