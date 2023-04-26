@@ -26,10 +26,10 @@ public class Main{
         StudentDB studentDB = new StudentDB(students);
 
         System.out.println(studentDB.getAllStudents());
-
+/*
         for (int i =0; i < 30; i++) {
             System.out.println(studentDB.randomStudent());
-        }
+        }*/
 
     }
 

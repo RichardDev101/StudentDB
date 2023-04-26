@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.concurrent.locks.Condition;
 
 import static java.util.Collection.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,14 +61,27 @@ class StudentDBTest {
         }
 */
     @Test
-    public void gfindById_ThrowsException_WhenStudentNorFound() {
+    public void findById_ThrowsException_WhenStudentNorFound() {
         //GIVEN
-        testStudentDB = new StudentDB();
+        Student student1= new Student("Klaus Mustermann", 18, "KM462");
+        Student student2= new Student("Susann Heinemann", 22, "SH034");
+        Student student3= new Student("Johann Mayer", 19, "JM953");
+
+        Map<String, Student> students = new HashMap<>();
+        students.put(student1.getId(), student1);
+        students.put(student2.getId(),student2);
+        students.put(student3.getId(),student3);
+
+        StudentDB testStudentDB = new StudentDB(students);
+
+        String id = "LM032"; // existiert nicht
+        //String id = "SH034" // existiert
+
         //WHEN & THEN
         try{
-            testStudentDB.findById();
-        } catch (exception){
-            Assertions.asserTrue(condition: true);
+            testStudentDB.findById(id);
+        } catch (NoSuchElementException exception){
+            assertTrue (Condition: true);
         }
          //Assertions.assertThrows((NoSuchElementException.class, ()-> testStudentDB.findById))
-}
+    }

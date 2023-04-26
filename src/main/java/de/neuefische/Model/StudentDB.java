@@ -28,7 +28,6 @@ public class StudentDB {
         return this.students;
     }
 
-
     public Map<String, Student> getAllStudents() {
         return this.students;
     }
