@@ -8,6 +8,18 @@ public class StudentDB{
     //FIELDS
     private Student[] students;
 
+
+    public Student[] addStudent (Student newStudent){
+        int previousNoStudent = this.students.length;
+        Student[] newStudentArray = new Student[previousNoStudent+1];
+
+        for (int i = 0; i <previousNoStudent; i++) {
+            newStudentArray[i]=this.students[i];
+        }
+        newStudentArray[previousNoStudent]=newStudent;
+        this.students=newStudentArray;
+        return this.students;
+    }
     //METHODS
     public Student[] getAllStudents(){
         return students;
