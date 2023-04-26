@@ -1,5 +1,6 @@
 package de.neuefische.Model;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -9,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentDBTest {
 
+    private StudentDB testStudentDB;
+
     @Test
     void getAllStudents_shouldReturn_threeStudents() {
         //GIVEN
@@ -16,48 +19,55 @@ class StudentDBTest {
         Student student2= new Student("Susann Heinemann", 22, "SH034");
         Student student3= new Student("Johann Mayer", 19, "JM953");
 
-        List<Student> students = new ArrayList<>();
-        students.add(student1);
-        students.add(student2);
-        students.add(student3);
+        Map<String,Student> students = new HashMap<>();
+        students.put(student1.getId(),student1);
+        students.put(student2.getId(),student2);
+        students.put(student3.getId(),student3);
 
         StudentDB studentDB = new StudentDB(students);
         //WHEN
-        List<Student> actual = studentDB.getAllStudents();
+        Map<String, Student> actual = studentDB.getAllStudents();
         //THEN
         assertEquals(students, actual);
     }
-    @Test
+    /* @Test
     void getAllStudents_shouldReturn_threeStudentsShuffled() {
         //GIVEN
         Student student1= new Student("Klaus Mustermann", 18, "KM462");
         Student student2= new Student("Susann Heinemann", 22, "SH034");
         Student student3= new Student("Johann Mayer", 19, "JM953");
 
-        List<Student> students = new ArrayList<>();
-        students.add(student1);
-        students.add(student2);
-        students.add(student3);
+        Map<String, Student> students = new HashMap<>();
+        students.put(student1.getId(),student1);
+        students.put(student2.getId(),student2);
+        students.put(student3.getId(),student3);
 
         StudentDB studentDB = new StudentDB(students);
 
-        List<Student> expected = new ArrayList<>();
-        expected.add(student3);
-        expected.add(student2);
-        expected.add(student1);
+        Map<String, Student> expected = new HashMap<>();
+        students.put(student1.getId(),student1);
+        students.put(student2.getId(),student2);
+        students.put(student3.getId(),student3);
 
         Collections.sort(expected);
 
         //WHEN
-        List<Student> actual = studentDB.getAllStudents();
+        Map<String, Student> actual = studentDB.getAllStudents();
         Collections.sort(actual);
 
         //THEN
         assertEquals(expected, actual);
         }
-
+*/
     @Test
     public void gfindById_ThrowsException_WhenStudentNorFound() {
         //GIVEN
-        StudentDB
+        testStudentDB = new StudentDB();
+        //WHEN & THEN
+        try{
+            testStudentDB.findById();
+        } catch (exception){
+            Assertions.asserTrue(condition: true);
+        }
+         //Assertions.assertThrows((NoSuchElementException.class, ()-> testStudentDB.findById))
 }

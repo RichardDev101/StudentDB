@@ -7,6 +7,12 @@ public class StudentDB {
     //FIELDS
     private Map<String, Student> students = new HashMap<>();
 
+
+    //METHODS
+
+    public Student findById (String id){
+       return this.students.get(id);
+    }
     public List<Student> clearList(List<Student> students) {
         this.students.clear();
         return students;
@@ -22,7 +28,7 @@ public class StudentDB {
         return this.students;
     }
 
-    //METHODS
+
     public Map<String, Student> getAllStudents() {
         return this.students;
     }
