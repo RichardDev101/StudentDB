@@ -16,7 +16,7 @@ class StudentDBTest {
         Student student2= new Student("Susann Heinemann", 22, "SH034");
         Student student3= new Student("Johann Mayer", 19, "JM953");
 
-        ArrayList<Student> students = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
         students.add(student1);
         students.add(student2);
         students.add(student3);
@@ -27,8 +27,7 @@ class StudentDBTest {
         //THEN
         assertEquals(students, actual);
     }
-
-@Test
+    @Test
     void getAllStudents_shouldReturn_threeStudentsShuffled() {
         //GIVEN
         Student student1= new Student("Klaus Mustermann", 18, "KM462");
@@ -56,4 +55,9 @@ class StudentDBTest {
         //THEN
         assertEquals(expected, actual);
         }
+
+    @Test
+    public void gfindById_ThrowsException_WhenStudentNorFound() {
+        //GIVEN
+        StudentDB
 }

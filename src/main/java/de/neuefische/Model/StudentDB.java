@@ -3,26 +3,31 @@ package de.neuefische.Model;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class StudentDB{
+public class StudentDB {
     //FIELDS
-    private List<Student> students =new ArrayList<>();
+    private Map<String, Student> students = new HashMap<>();
 
+    public List<Student> clearList(List<Student> students) {
+        this.students.clear();
+        return students;
+    }
 
-
-    public List<Student> addStudent (Student newStudent){
-        students.add(newStudent);
+    public Map<String, Student> addStudent(Student newStudent) {
+        students.put(newStudent.getId(),newStudent);
         return this.students;
     }
-    public List<Student> removeStudent(Student studentToRemove) {
-        students.remove(studentToRemove);
+
+    public Map<String,Student> removeStudent(Student studentToRemove) {
+        students.remove(studentToRemove.getId(), studentToRemove);
         return this.students;
     }
+
     //METHODS
-    public List<Student> getAllStudents(){
+    public Map<String, Student> getAllStudents() {
         return this.students;
     }
 
-    public Student randomStudent(){
+    public Student randomStudent() {
         Random random = new Random();
         int index = random.nextInt(students.size());
         return students.get(index);
@@ -30,12 +35,14 @@ public class StudentDB{
 
     //DEFAULT METHODS
 
+
     @Override
     public String toString() {
         return "StudentDB{" +
                 "students=" + students +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,19 +50,24 @@ public class StudentDB{
         StudentDB studentDB = (StudentDB) o;
         return Objects.equals(students, studentDB.students);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(students);
     }
+
     //CONSTRUCTOR
-    public StudentDB(ArrayList<Student> students) {
+    public StudentDB(Map<String, Student> students) {
         this.students = students;
     }
+
     //GETTER AND SETTER
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
-    }
-    public List<Student> getStudents() {
+
+    public Map<String, Student> getStudents() {
         return students;
+    }
+
+    public void setStudents(Map<String, Student> students) {
+        this.students = students;
     }
 }
