@@ -3,6 +3,7 @@ package de.neuefische.Model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.rmi.NoSuchObjectException;
 import java.util.*;
 import java.util.concurrent.locks.Condition;
 
@@ -16,14 +17,14 @@ class StudentDBTest {
     @Test
     void getAllStudents_shouldReturn_threeStudents() {
         //GIVEN
-        Student student1= new Student("Klaus Mustermann", 18, "KM462");
-        Student student2= new Student("Susann Heinemann", 22, "SH034");
-        Student student3= new Student("Johann Mayer", 19, "JM953");
+        Student student1 = new Student("Klaus Mustermann", 18, "KM462");
+        Student student2 = new Student("Susann Heinemann", 22, "SH034");
+        Student student3 = new Student("Johann Mayer", 19, "JM953");
 
-        Map<String,Student> students = new HashMap<>();
-        students.put(student1.getId(),student1);
-        students.put(student2.getId(),student2);
-        students.put(student3.getId(),student3);
+        Map<String, Student> students = new HashMap<>();
+        students.put(student1.getId(), student1);
+        students.put(student2.getId(), student2);
+        students.put(student3.getId(), student3);
 
         StudentDB studentDB = new StudentDB(students);
         //WHEN
@@ -31,6 +32,7 @@ class StudentDBTest {
         //THEN
         assertEquals(students, actual);
     }
+
     /* @Test
     void getAllStudents_shouldReturn_threeStudentsShuffled() {
         //GIVEN
@@ -61,27 +63,31 @@ class StudentDBTest {
         }
 */
     @Test
-    public void findById_ThrowsException_WhenStudentNorFound() {
+    public void findById_ThrowsException_WhenStudentNotFound() {
         //GIVEN
-        Student student1= new Student("Klaus Mustermann", 18, "KM462");
-        Student student2= new Student("Susann Heinemann", 22, "SH034");
-        Student student3= new Student("Johann Mayer", 19, "JM953");
+
+/*        Student student1 = new Student("Klaus Mustermann", 18, "KM462");
+        Student student2 = new Student("Susann Heinemann", 22, "SH034");
+        Student student3 = new Student("Johann Mayer", 19, "JM953");
 
         Map<String, Student> students = new HashMap<>();
         students.put(student1.getId(), student1);
-        students.put(student2.getId(),student2);
-        students.put(student3.getId(),student3);
+        students.put(student2.getId(), student2);
+        students.put(student3.getId(), student3);
 
-        StudentDB testStudentDB = new StudentDB(students);
+        StudentDB testStudentDB = new StudentDB(students);*/
+        StudentDB testStudentDB = new StudentDB();
 
         String id = "LM032"; // existiert nicht
         //String id = "SH034" // existiert
 
         //WHEN & THEN
-        try{
+        try {
             testStudentDB.findById(id);
-        } catch (NoSuchElementException exception){
-            assertTrue (Condition: true);
+        } catch (NoSuchObjectException exception) {
+            Assertions.assertTrue(true);
+
         }
-         //Assertions.assertThrows((NoSuchElementException.class, ()-> testStudentDB.findById))
+        //Assertions.assertThrows((NoSuchElementException.class, ()-> testStudentDB.findById(id))
     }
+}

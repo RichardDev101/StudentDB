@@ -1,6 +1,7 @@
 package de.neuefische.Model;
 
 import java.lang.reflect.Array;
+import java.rmi.NoSuchObjectException;
 import java.util.*;
 
 public class StudentDB {
@@ -10,8 +11,12 @@ public class StudentDB {
 
     //METHODS
 
-    public Student findById (String id){
-       return this.students.get(id);
+    public Student findById (String id) throws NoSuchObjectException {
+        if (this.students.containsKey(id)) {
+            return this.students.get(id);
+        } else {
+            throw new NoSuchObjectException("Student not found");
+        }
     }
     public List<Student> clearList(List<Student> students) {
         this.students.clear();
@@ -66,6 +71,8 @@ public class StudentDB {
         this.students = students;
     }
 
+    public StudentDB() {
+    }
     //GETTER AND SETTER
 
     public Map<String, Student> getStudents() {
