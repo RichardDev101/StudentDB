@@ -4,6 +4,8 @@ package de.neuefische;
 import de.neuefische.Model.Student;
 import de.neuefische.Model.StudentDB;
 
+import java.util.ArrayList;
+
 public class Main{
     public static void main(String... args){
         Student student1= new Student("Klaus Mustermann", 18, "KM462");
@@ -14,7 +16,11 @@ public class Main{
         System.out.println(student2.toString());
         System.out.println(student3.toString());*/
 
-        Student[] students = {student1, student2, student3};
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
+
         StudentDB studentDB = new StudentDB(students);
 
 

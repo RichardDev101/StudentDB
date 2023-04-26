@@ -1,81 +1,64 @@
 package de.neuefische.Model;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class StudentDB{
     //FIELDS
-    private Student[] students;
+    private ArrayList<Student> students =new ArrayList<>();
 
 
-    public Student[] addStudent (Student newStudent){
-        int previousNoStudent = this.students.length;
-        Student[] newStudentArray = new Student[previousNoStudent+1];
 
-        for (int i = 0; i <previousNoStudent; i++) {
-            newStudentArray[i]=this.students[i];
-        }
-        newStudentArray[previousNoStudent]=newStudent;
-        this.students=newStudentArray;
+    public ArrayList<Student> addStudent (Student newStudent){
+        students.add(newStudent);
         return this.students;
     }
-    public Student[] removeStudent(Student studentToRemove){
-        //Abbruchbedingung wenn Student nicht teil des Arrays wird Array zurückgegeben
-        if(isStudentRegistered(studentToRemove)) {
-            return new Student[0];
-        }
-        Student[] newStuden= new Student[this.students.length-1];
-
-        int j = 0;
-        for (int i=0; i<this.students.length;i++){
-            if(!this.students[i].equals(studentToRemove)){
-                newStuden[j]=this.students[i];
-                j++;
-            }
-        }
-        students=newStuden;
+    public ArrayList<Student> removeStudent(Student studentToRemove) {
+        students.remove(studentToRemove);
         return this.students;
-    }
-
-    public boolean isStudentRegistered(Student studentToCheck){
-
-        for (int i=0; i<this.students.length; i++){
-            if (this.students[i].equals(studentToCheck)){
-                return true;
-            }
-        }
-        return false;
     }
     //METHODS
-    public Student[] getAllStudents(){
-        return students;
+    public ArrayList<Student> getAllStudents(){
+        return this.students;
     }
 
     public Student randomStudent(){
         Random random = new Random();
-        int index = random.nextInt(students.length);
-        return students[index];
+        int index = random.nextInt(students.size());
+        return students.get(index);
     }
 
     //DEFAULT METHODS
+
     @Override
     public String toString() {
         return "StudentDB{" +
-                "students=" + Arrays.toString(students) +
+                "students=" + students +
                 '}';
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentDB studentDB = (StudentDB) o;
+        return Objects.equals(students, studentDB.students);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(students);
+    }
     //CONSTRUCTOR
-    public StudentDB(Student[] students) {
+    public StudentDB(ArrayList<Student> students) {
         this.students = students;
     }
     //GETTER AND SETTER
-    public void setStudents(Student[] students){
+    public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
-    public Student[] getStudents(){
+    public ArrayList<Student> getStudents() {
         return students;
     }
-
-
 }
