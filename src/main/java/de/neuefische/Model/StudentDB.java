@@ -20,6 +20,33 @@ public class StudentDB{
         this.students=newStudentArray;
         return this.students;
     }
+    public Student[] removeStudent(Student studentToRemove){
+        //Abbruchbedingung wenn Student nicht teil des Arrays wird Array zurückgegeben
+        if(isStudentRegistered(studentToRemove)) {
+            return new Student[0];
+        }
+        Student[] newStuden= new Student[this.students.length-1];
+
+        int j = 0;
+        for (int i=0; i<this.students.length;i++){
+            if(!this.students[i].equals(studentToRemove)){
+                newStuden[j]=this.students[i];
+                j++;
+            }
+        }
+        students=newStuden;
+        return this.students;
+    }
+
+    public boolean isStudentRegistered(Student studentToCheck){
+
+        for (int i=0; i<this.students.length; i++){
+            if (this.students[i].equals(studentToCheck)){
+                return true;
+            }
+        }
+        return false;
+    }
     //METHODS
     public Student[] getAllStudents(){
         return students;
