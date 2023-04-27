@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main{
-    public static void main(String... args){
+    public static void main(String... args) {
 
         StudentDB studentDb = new StudentDB();
 
@@ -25,11 +25,10 @@ public class Main{
         studentDb.addStudent(stu3);
         studentDb.addStudent(stu4);
 
-
-        try{
-            System.out.println((studentDb.findById("dgdsgfsdg")));
-        }catch(StudentNotFoundException e){
-            System.out.println("Oha, eine Exception")+ e.getMessage();
+        try {
+            System.out.println(studentDb.findById("dgdsgfsdg"));
+        } catch (StudentNotFoundException e) {
+            System.out.println("Oha, eine Exceptiosn");
         }
 
 /*
@@ -82,5 +81,5 @@ public class Main {
 
 */
 
-
+    }
 }

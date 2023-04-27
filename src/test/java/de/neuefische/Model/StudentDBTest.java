@@ -84,7 +84,7 @@ class StudentDBTest {
         //WHEN & THEN
         try {
             testStudentDB.findById(id);
-        } catch (NoSuchObjectException exception) {
+        } catch (StudentNotFoundException exception) {
             Assertions.assertTrue(true);
 
         }
