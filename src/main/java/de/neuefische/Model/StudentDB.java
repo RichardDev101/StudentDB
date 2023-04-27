@@ -11,11 +11,11 @@ public class StudentDB {
 
     //METHODS
 
-    public Student findById (String id) throws NoSuchObjectException {
+    public Student findById (String id) throws StudentNotFoundException {
         if (this.students.containsKey(id)) {
             return this.students.get(id);
         } else {
-            throw new NoSuchObjectException("Student not found");
+            throw new StudentNotFoundException("Student with id " + id + " not found");
         }
     }
     public List<Student> clearList(List<Student> students) {

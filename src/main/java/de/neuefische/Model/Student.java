@@ -5,6 +5,7 @@ public class Student{
     private int age;
     private String id;
 
+
     //DEFAULT METHODS
     @Override
     public String toString() {
@@ -14,13 +15,15 @@ public class Student{
                 ", id='" + id + '\'' +
                 '}';
     }
-
     //CONSTRUCTOR
     public Student(String name, int age, String id){
         this.name = name;
         this.age = age;
         this.id = id;
     }
+    public Student(String name, String id) {
+    }
+
     public Student() {
     }
 

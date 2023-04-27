@@ -63,7 +63,7 @@ class StudentDBTest {
         }
 */
     @Test
-    public void findById_ThrowsException_WhenStudentNotFound() {
+    public void findById1_ThrowsException_WhenStudentNotFound() {
         //GIVEN
 
 /*        Student student1 = new Student("Klaus Mustermann", 18, "KM462");
@@ -89,5 +89,38 @@ class StudentDBTest {
 
         }
         //Assertions.assertThrows((NoSuchElementException.class, ()-> testStudentDB.findById(id))
+    }
+
+    @Test
+    void findById_ShouldThrowException_WhenInvalidIdIsGiven() {
+        //Given
+        StudentDB studentDb = new StudentDB();
+
+        String invalidID = "sdkgsdj";
+
+        //WHEN & THEN
+        try{
+            studentDb.findById(invalidID);
+        }catch(StudentNotFoundException e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    void findById_ShouldThrowException_WhenValidIdIsGiven() {
+        //Given
+        StudentDB studentDb = new StudentDB();
+
+        BiologyStudent stu1 = new BiologyStudent("Stu1", "B1", true);
+        studentDb.addStudent(stu1);
+
+        String validID = stu1.getId();
+
+        //WHEN & THEN
+        try{
+            studentDb.findById(validID);
+        }catch(StudentNotFoundException e){
+            fail();
+        }
     }
 }
